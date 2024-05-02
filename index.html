@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word of the Day</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #currentWord {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #changeButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #changeButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word of the Day</h1>
+    <p id="currentWord">Hello</p>
+    <button id="changeButton">Change Word</button>
+
+    <script>
+        document.getElementById('changeButton').addEventListener('click', function() {
+            // Change word functionality
+            const newWord = prompt("Enter the new word:");
+            document.getElementById('currentWord').innerText = newWord;
+        });
+    </script>
+</body>
+</html>
