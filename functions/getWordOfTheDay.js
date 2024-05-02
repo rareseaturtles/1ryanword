@@ -1,40 +1,37 @@
-// Function to fetch the word of the day from the serverless function
-async function fetchWordOfTheDay() {
-    try {
-        const response = await fetch('/functions/getWordOfTheDay');
-        if (!response.ok) {
-            throw new Error('Failed to fetch word of the day');
-        }
-        const data = await response.json();
-        console.log('Word of the day:', data.currentWord); // Log the word of the day
-        document.getElementById('currentWord').innerText = data.currentWord;
-    } catch (error) {
-        console.error('Error fetching word of the day:', error);
-    }
-}
+// functions/getWordOfTheDay.js
 
-// Call the function to fetch the word of the day when the page loads
-fetchWordOfTheDay();
+let currentWord = 'Hello'; // Initialize the word
 
-// Change word button click event
-document.getElementById('changeButton').addEventListener('click', async function() {
-    const newWord = prompt("Enter the new word:");
-    if (newWord !== null && newWord.trim() !== '') {
-        try {
-            const response = await fetch('/functions/getWordOfTheDay', {
-                method: 'POST',
-                body: JSON.stringify({ newWord }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            if (!response.ok) {
-                throw new Error('Failed to change word');
-            }
-            const data = await response.json();
-            document.getElementById('currentWord').innerText = data.currentWord;
-        } catch (error) {
-            console.error('Error changing word:', error);
-        }
+exports.handler = async (event, context) => {
+    console.log('Received request:', event);
+
+    if (event.httpMethod === 'GET') {
+        console.log('GET request received');
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ currentWord })
+        };
+    } else if (event.httpMethod === 'POST') {
+        console.log('POST request received');
+        const requestBody = JSON.parse(event.body);
+        console.log('Request body:', requestBody);
+
+        const newWord = requestBody.newWord;
+        console.log('New word:', newWord);
+
+        currentWord = newWord;
+        
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: 'Word changed successfully', currentWord })
+        };
+    } else {
+        console.log('Unsupported method:', event.httpMethod);
+        return {
+            statusCode: 405,
+            body: JSON.stringify({ error: 'Method Not Allowed' })
+        };
     }
-});
+};
+
+
