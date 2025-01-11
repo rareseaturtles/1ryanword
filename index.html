@@ -10,24 +10,28 @@
             margin: 0;
             padding: 0;
             color: #333;
-            background-color: #eef7fc; /* Light pale blue background */
+            background-color: #f0f8ff; /* Pale blue background */
         }
         header {
-            background-color: #005b96; /* Deep blue to match logo */
+            background-color: #708090; /* Grey background */
             color: white;
-            padding: 20px;
+            padding: 20px 20px;
             text-align: center;
         }
         header img {
-            width: 100px;
-            height: auto;
-            display: block;
-            margin: 0 auto 10px;
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        header h1 {
+            font-size: 2rem;
+            display: inline;
         }
         nav {
             display: flex;
             justify-content: center;
-            background-color: #004080; /* Darker blue */
+            background-color: #333;
             padding: 10px 0;
         }
         nav a {
@@ -54,10 +58,10 @@
             padding: 20px;
         }
         h2 {
-            color: #005b96; /* Deep blue for headings */
+            color: #708090; /* Grey for headings */
         }
         footer {
-            background-color: #004080;
+            background-color: #333;
             color: white;
             text-align: center;
             padding: 10px 0;
@@ -65,8 +69,16 @@
             bottom: 0;
             width: 100%;
         }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
         .contact-form button {
-            background-color: #005b96; /* Match logo color */
+            background-color: #708090; /* Grey button */
             color: white;
             border: none;
             padding: 10px 20px;
@@ -75,11 +87,7 @@
             font-size: 1rem;
         }
         .contact-form button:hover {
-            background-color: #004080;
-        }
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
+            background-color: #5a6b7b;
         }
     </style>
 </head>
@@ -88,7 +96,7 @@
 <header>
     <img src="https://ibb.co/t8j4pL3" alt="Good Home Cleaning Logo">
     <h1>Good Home Cleaning by Shelby</h1>
-    <p>Your trusted home cleaning service in Indiana!</p>
+    <p>Your trusted home cleaning service in Indianapolis!</p>
 </header>
 
 <nav>
