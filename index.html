@@ -10,23 +10,36 @@
             margin: 0;
             padding: 0;
             color: #333;
+            background-color: #f9f9f9;
         }
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            padding: 20px 20px;
             text-align: center;
+        }
+        header img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        header h1 {
+            display: inline;
+            font-size: 2rem;
         }
         nav {
             display: flex;
             justify-content: center;
             background-color: #333;
+            padding: 10px 0;
         }
         nav a {
             color: white;
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
+            font-size: 1rem;
         }
         nav a:hover {
             background-color: #ddd;
@@ -34,9 +47,18 @@
         }
         .container {
             padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .services, .pricing, .contact {
             margin-bottom: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h2 {
+            color: #4CAF50;
         }
         footer {
             background-color: #333;
@@ -53,6 +75,7 @@
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 1rem;
         }
         .contact-form button {
             background-color: #4CAF50;
@@ -61,6 +84,7 @@
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 1rem;
         }
         .contact-form button:hover {
             background-color: #45a049;
@@ -70,6 +94,7 @@
 <body>
 
 <header>
+    <img src="https://via.placeholder.com/50" alt="S.M Cleaning Logo">
     <h1>Welcome to S.M Cleaning</h1>
     <p>Your trusted home cleaning service in Indianapolis!</p>
 </header>
