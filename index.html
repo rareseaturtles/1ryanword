@@ -3,86 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word of the Day</title>
+    <title>S.M Cleaning - Home Cleaning Services</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
         }
-
-        h1 {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        #currentWord {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        #changeButton {
+        header {
+            background-color: #4CAF50;
+            color: white;
             padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            padding: 20px;
+        }
+        .services, .pricing, .contact {
+            margin-bottom: 40px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
             border-radius: 5px;
         }
-
-        #changeButton:hover {
-            background-color: #0056b3;
+        .contact-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <h1>Word of the Day</h1>
-    <p id="currentWord">Loading...</p>
-    <button id="changeButton">Change Word</button>
 
-    <script>
-        // Function to fetch the current word from the serverless function
-        async function getCurrentWord() {
-            try {
-                const response = await fetch('/.netlify/functions/getWordOfTheDay');
-                const data = await response.json();
-                document.getElementById('currentWord').innerText = data.currentWord;
-            } catch (error) {
-                console.error('Error fetching current word:', error);
-            }
-        }
+<header>
+    <h1>Welcome to S.M Cleaning</h1>
+    <p>Your trusted home cleaning service in Indianapolis!</p>
+</header>
 
-        // Function to change the word by sending a POST request to the serverless function
-        async function changeWord() {
-            const newWord = prompt("Enter the new word:");
-            try {
-                const response = await fetch('/.netlify/functions/getWordOfTheDay', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ word: newWord })
-                });
-                const data = await response.json();
-                console.log(data.message); // Log the message from the serverless function
-                // After changing the word, fetch and display the updated word
-                getCurrentWord();
-            } catch (error) {
-                console.error('Error changing word:', error);
-            }
-        }
+<nav>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact Us</a>
+</nav>
 
-        // Add event listener to changeButton to call changeWord function
-        document.getElementById('changeButton').addEventListener('click', changeWord);
+<div class="container">
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <ul>
+            <li>Dusting and wiping surfaces</li>
+            <li>Sweeping, mopping, and vacuuming floors</li>
+            <li>Bathroom cleaning (toilets, sinks, showers/tubs)</li>
+            <li>Kitchen cleaning (countertops, sinks, appliance exteriors)</li>
+            <li>Trash removal</li>
+            <li>General tidying up</li>
+        </ul>
+    </section>
 
-        // When the page loads, fetch and display the current word
-        getCurrentWord();
-    </script>
+    <section id="pricing" class="pricing">
+        <h2>Pricing</h2>
+        <p>We offer competitive pricing for our cleaning services:</p>
+        <ul>
+            <li>Studio/1-bedroom: $90-$110</li>
+            <li>2-bedroom: $110-$150</li>
+            <li>3-bedroom: $150-$190</li>
+            <li>4-bedroom+: $190+</li>
+            <li>Hourly Rate: $40-$45/hour</li>
+        </ul>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Phone: <a href="tel:7653663344">765-366-3344</a></p>
+        <p>Email: <a href="mailto:contact@smcleaning.com">contact@smcleaning.com</a></p>
+        <form class="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2025 S.M Cleaning. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
